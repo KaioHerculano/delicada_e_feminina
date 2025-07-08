@@ -54,24 +54,25 @@
                 <div class="card category-card {% if selected_category == category.name %}selected{% endif %}">
                     <div class="card-body text-center">
                         {% if category.name == "Maquiagem" %}
-                            <i class="bi bi-basket-fill text-warning"></i>
+                            <i class="bi bi-brush text-danger"></i> <!-- rosa/vermelho -->
                         {% elif category.name == "Esmaltes" %}
-                            <i class="bi bi-apple text-danger"></i>
+                            <i class="bi bi-droplet-fill text-pink"></i> <!-- rosa -->
                         {% elif category.name == "Cuidados com a Pele" %}
-                            <i class="bi bi-flower1 text-success"></i>
+                            <i class="bi bi-heart text-danger"></i> <!-- lilás/ciano -->
                         {% elif category.name == "Perfumes" %}
-                            <i class="bi bi-snow text-info"></i>
+                            <i class="bi bi-patch-check text-warning"></i> <!-- dourado/amarelo -->
                         {% elif category.name == "Acessórios" %}
-                            <i class="bi bi-stars text-primary"></i>
+                            <i class="bi bi-stars text-info"></i> <!-- rosa/vermelho -->
                         {% else %}
-                            <i class="bi bi-tag text-secondary"></i>
+                            <i class="bi bi-gem text-secondary"></i> <!-- cinza padrão -->
                         {% endif %}
-                        <h6 class="mt-2 mb-0">{{ category.name }}</h6>
-                        <p>{{ category.product_count}}+ produtos</p>
+                        <h6 class="mt-2 mb-0 text-primary">{{ category.name }}</h6> <!-- azul para texto -->
+                        <p class="text-muted">{{ category.product_count }}+ produtos</p>
                     </div>
                 </div>
             </a>
         </div>
+
         {% endfor %}
 
         <div class="col-6 col-sm-4 col-md-2">
