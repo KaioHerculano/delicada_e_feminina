@@ -1,0 +1,46 @@
+{% load static %}
+<footer class="main-footer py-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4 mb-4 mb-md-0">
+                <div class="footer-logo mb-3">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo" class="logo-img">
+                </div>
+                <p>Seu mercado online de confiança. Produtos frescos, preços justos e entrega rápida para toda a família.</p>
+                <div class="social-icons mt-3">
+                    <a href="#" class="text-white me-3"><i class="bi bi-facebook fs-5"></i></a>
+                    <a href="#" class="text-white me-3"><i class="bi bi-instagram fs-5"></i></a>
+                    <a href="#" class="text-white"><i class="bi bi-twitter fs-5"></i></a>
+                </div>
+            </div>
+            <div class="col-md-2 mb-4 mb-md-0">
+                <h5 class="footer-title">Links Rápidos</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}#top">Início</a></li>
+                    <li><a href="{% url 'home' %}#categorias">Categorias</a></li>
+                    <li><a href="{% url 'home' %}#todos-os-produtos">Produtos</a></li>
+                    <li><a href="{% url 'home' %}#about">Sobre Nós</a></li>
+                    <li><a href="{% url 'home' %}#ofertas">Ofertas</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3 mb-4 mb-md-0">
+                <h5 class="footer-title">Atendimento</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'home' %}#central-ajuda">Central de Ajuda</a></li>
+                    <li><a href="{% url 'home' %}#politica-privacidade">Política de Privacidade</a></li>
+                    <li><a href="{% url 'home' %}#termos-uso">Termos de Uso</a></li>
+                    <li><a href="{% url 'home' %}#trocas-devolucoes">Trocas e Devoluções</a></li>
+                    <li><a href="{% url 'home' %}#faq">FAQ</a></li>
+                </ul>
+            </div>
+            <div class="col-md-3">
+                <h5 class="footer-title">Contato</h5>
+                <ul class="list-unstyled contact-info">
+                    <li><i class="bi bi-telephone-fill me-2"></i> (11) 9999-9999</li>
+                    <li><i class="bi bi-envelope-fill me-2"></i> contato@webshop.com</li>
+                    <li><i class="bi bi-geo-alt-fill me-2"></i> Rua das Compras, 123 <br> Centro, São Paulo - SP <br> CEP: 01234-567</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
