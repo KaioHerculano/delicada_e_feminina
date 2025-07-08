@@ -35,7 +35,7 @@ class AddToCartView(View):
 
 class AddApiProductToCartView(View):
     def post(self, request, product_id):
-        api_url = f'http://127.0.0.1:5000/api/v1/public/products/1/{product_id}/'
+        api_url = f'https://kaioherculano12.pythonanywhere.com/api/v1/public/products/1/{product_id}/'
         try:
             response = requests.get(api_url, timeout=5)
             response.raise_for_status()
