@@ -1,21 +1,17 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
-WORKDIR /app
+WORKDIR /Sales_Hub
 
-COPY requirements.txt .
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-RUN apt-get update && \
-    apt-get install -y libpq-dev gcc && \
-    pip install --no-cache-dir -r requirements.txt && \
-    apt-get remove -y gcc && \
-    apt-get autoremove -y && \
-    apt-get clean
+RUN apt-get update && apt-get install -y git
 
 COPY . .
 
-ENV PYTHONDONTWRITEBYTECODE=1
-ENV PYTHONUNBUFFERED=1
+RUN pip install --upgrade pip
+RUN pip install -r requirements.txt
 
 EXPOSE 8000
 
-CMD sh -c "python manage.py migrate && python manage.py runserver 0.0.0.0:8000"
+CMD python manage.py migrate && python manage.py runserver 0.0.0.0:8000
