@@ -76,7 +76,7 @@
         {% endfor %}
 
         <div class="col-6 col-sm-4 col-md-2">
-            <a href="#todos-os-produtos" class="text-decoration-none">
+            <a href="{% url 'home' %}#todos-os-produtos" class="text-decoration-none">
                 <div class="card category-card {% if not selected_category %}selected{% endif %}">
                     <div class="card-body text-center">
                         <i class="bi bi-grid-3x3-gap-fill text-primary"></i>
