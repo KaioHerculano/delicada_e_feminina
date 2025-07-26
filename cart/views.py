@@ -1,4 +1,5 @@
 from django.views import View
+from django.conf import settings
 from django.shortcuts import render, redirect, get_object_or_404
 from .cart import Cart
 from django.utils.decorators import method_decorator
@@ -34,8 +35,10 @@ class AddToCartView(View):
 
 
 class AddApiProductToCartView(View):
+    api_url = settings.API_URL
+    
     def post(self, request, product_id):
-        api_url = f'https://kaioherculano12.pythonanywhere.com/api/v1/public/products/1/{product_id}/'
+        api_url = f"{settings.API_URL}/api/v1/public/products/1/{product_id}/"
         try:
             response = requests.get(api_url, timeout=5)
             response.raise_for_status()

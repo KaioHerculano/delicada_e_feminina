@@ -1,7 +1,9 @@
 import requests
+from django.conf import settings
 
 def fetch_external_products():
-    url = "https://kaioherculano12.pythonanywhere.com/api/v1/products/"
+    api_url = settings.EXTERNAL_API_URL
+    url = f"{api_url}/api/v1/products/"
     try:
         response = requests.get(url, timeout=5)
         response.raise_for_status()

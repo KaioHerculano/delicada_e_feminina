@@ -3,6 +3,7 @@ from products.models import Product
 from django.contrib.auth.views import LoginView
 from django.contrib import messages
 import requests
+from django.conf import settings
 from decimal import Decimal
 
 class ProductData:
@@ -23,12 +24,14 @@ class ProductData:
         self.rating = rating
 
 class CustomLoginView(LoginView):
+    api_url = settings.API_URL
+
     def form_valid(self, form):
         response = super().form_valid(form)
 
         try:
             api_response = requests.post(
-                'https://kaioherculano12.pythonanywhere.com/api/v1/authetication/token/',
+                f"{self.api_url}/api/v1/authetication/token/",
                 json={
                     "username": form.cleaned_data['username'],
                     "password": form.cleaned_data['password']
@@ -50,6 +53,7 @@ class CustomLoginView(LoginView):
 
 class HomeView(TemplateView):
     template_name = 'home.html'
+    api_url = settings.API_URL
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
@@ -89,7 +93,7 @@ class HomeView(TemplateView):
                 )
             )
         
-        api_base_url = "https://kaioherculano12.pythonanywhere.com"
+        api_base_url = self.api_url 
         try:
             api_all_products_response = requests.get(
                 f'{api_base_url}/api/v1/public/products/{company_id}/',

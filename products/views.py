@@ -1,5 +1,6 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render, redirect
 from django.contrib import messages
+from django.conf import settings
 import requests
 from . import models
 from django.views import View
@@ -15,6 +16,7 @@ class ProductListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
     context_object_name = 'products'
     paginate_by = 8
     permission_required = 'products.view_product'
+    api_url = settings.API_URL
 
     def get_queryset(self):
         query = self.request.GET.get('q')
@@ -28,7 +30,7 @@ class ProductListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
         if token:
             try:
                 headers = {'Authorization': f'Bearer {token}'}
-                response = requests.get("https://kaioherculano12.pythonanywhere.com/api/v1/products/", headers=headers)
+                response = requests.get(f"{self.api_url}/api/v1/products/", headers=headers)
                 if response.status_code == 200:
                     data = response.json()
                     for item in data:
@@ -63,7 +65,7 @@ class ProductDetailView(View):
     
     def get_api_product(self, request, api_id):
         try:
-            api_base_url = "https://kaioherculano12.pythonanywhere.com"
+            api_base_url = f"{self.api_url}"
             api_url = f'{api_base_url}/api/v1/public/products/1/{api_id}/'
             
             response = requests.get(api_url, timeout=5)
